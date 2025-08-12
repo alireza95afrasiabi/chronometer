@@ -1,89 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<style>
-    *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    main{
-        width: 100%;
-        height: 100vh;
-        background-image: linear-gradient(45deg, orangered, darkorange, rgb(255, 178, 35));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    }
-    main>section{
-        width: 700px;
-        height: 500px;
-        border-radius: 5px;
-        border: 1px solid black;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        align-content: flex-start;
-        padding-top: 20px;
-        overflow: hidden;
-    }
-    main>section>div{
-        width: 30%;
-        height: 70px;
-        border: 1px solid black;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 35px;
-    }
-    main>section>button{
-        width: 30%;
-        height: 30px;
-        border-radius: 5px;
-        margin-top: 20px;
-        background-color: black;
-        color: white;
-        transition: .2s;
-    }
-    main>section>button:hover{
-        background-color: white;
-        color: black;
-    }
-    #lapp{
-        width: 100%;
-        height: 20px;
-        /* background-color: red; */
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        font-size: 35px;
-    }
-    /* #lapp>li{
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        background-color: green;
-    } */
-    #lapp>div{
-        width: 30%;
-        height: 35px;
-        /* background-color: red; */
-        border: 1px solid black;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 2px;
-    }
-</style>
+<link rel="stylesheet" href="./style.css">
+
 <body>
     <main>
         <section>
@@ -100,81 +25,6 @@
         </section>
     </main>
 </body>
-<script>
+<script src="./script.js"></script>
 
-    // global variable 
-
-    let _sec = 0
-    let _milSec = 0
-    let _min = 0
-    let _setInt1
-  
-    // start button 
-
-    document.getElementById('_start').addEventListener('click', function(){
-        if((document.getElementById('_start').getAttribute('data-status')) == '_on' ){
-            _setInt1 = setInterval(_second,10);
-            document.getElementById('_start').setAttribute('data-status', '_off')
-        }
-    })
-
-    // stop button 
-
-    document.getElementById('_stop').addEventListener('click', ()=>{
-        clearInterval(_setInt1)
-        document.getElementById('_start').setAttribute('data-status', '_on')
-    })
-
-    // lap button 
-
-    document.getElementById('_lap').addEventListener('click', ()=>{
-        // _lapList = document.createElement('li')
-        // _lapList.innerHTML = _min + ' min - ' + _sec + ' sec - ' + _milSec
-        // document.getElementById('lapp').appendChild(_lapList)
-     
-        _lapList = document.createElement('div')
-        _lapList.innerHTML = _min + ' `'
-        document.getElementById('lapp').appendChild(_lapList)
-     
-        _lapList = document.createElement('div')
-        _lapList.innerHTML = _sec + ' ``'
-        document.getElementById('lapp').appendChild(_lapList)
-
-        _lapList = document.createElement('div')
-        _lapList.innerHTML = _milSec
-        document.getElementById('lapp').appendChild(_lapList)
-    })
-
-    // function timer 
-
-    function _second(){
-        if(_milSec < 99){
-            _milSec++
-            if(_milSec<10){
-                document.getElementById('_milSec').innerHTML = '0' + _milSec
-            }else{
-                document.getElementById('_milSec').innerHTML = _milSec
-            }
-        }else{
-            _milSec = 0
-            if(_sec < 59){
-                _sec++
-                if(_sec<10){
-                    document.getElementById('_sec').innerHTML = '0' + _sec
-                }else{
-                    document.getElementById('_sec').innerHTML = _sec
-                }
-            }else{
-                _sec = 0
-                _min++
-                if(_min<10){
-                    document.getElementById('_min').innerHTML = '0' + _min
-                }else{
-                    document.getElementById('_min').innerHTML = _min                    
-                }
-            }
-
-        }
-    }
-</script>
 </html>
